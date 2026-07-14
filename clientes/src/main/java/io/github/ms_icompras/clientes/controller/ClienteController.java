@@ -1,0 +1,31 @@
+package io.github.ms_icompras.clientes.controller;
+
+import io.github.ms_icompras.clientes.model.Cliente;
+import io.github.ms_icompras.clientes.service.ClienteService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("clientes")
+@RequiredArgsConstructor
+public class ClienteController {
+
+    private final ClienteService clienteService;
+
+    @PostMapping
+    public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente){
+        clienteService.salvar(cliente);
+        return ResponseEntity.ok(cliente);
+    }
+
+    @GetMapping("{codigo}")
+    public ResponseEntity<Cliente> buscarPorCodigo(@PathVariable Long codigo){
+        return clienteService
+                .buscarPorCodigo(codigo)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
+}
