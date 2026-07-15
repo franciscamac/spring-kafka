@@ -1,5 +1,6 @@
 package io.github.ms_icompras.pedidos.service;
 
+import io.github.ms_icompras.pedidos.model.Pedido;
 import io.github.ms_icompras.pedidos.repository.ItemPedidoRepository;
 import io.github.ms_icompras.pedidos.repository.PedidoRepository;
 import io.github.ms_icompras.pedidos.validator.PedidoValidator;
@@ -15,5 +16,8 @@ public class PedidoService {
     private final ItemPedidoRepository itemPedidoRepository;
     private final PedidoValidator pedidoValidator;
 
+    public Pedido criarPedido(Pedido pedido){
+
+    }
 
 }
