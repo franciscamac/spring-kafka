@@ -1,4 +1,4 @@
-package io.github.ms_icompras.pedidos.controller.dto.mappers;
+package io.github.ms_icompras.pedidos.controller.mappers;
 
 import io.github.ms_icompras.pedidos.controller.dto.ItemPedidoDTO;
 import io.github.ms_icompras.pedidos.model.ItemPedido;

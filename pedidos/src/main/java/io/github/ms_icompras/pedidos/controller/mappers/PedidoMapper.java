@@ -1,4 +1,4 @@
-package io.github.ms_icompras.pedidos.controller.dto.mappers;
+package io.github.ms_icompras.pedidos.controller.mappers;
 
 import io.github.ms_icompras.pedidos.controller.dto.ItemPedidoDTO;
 import io.github.ms_icompras.pedidos.controller.dto.NovoPedidoDTO;
@@ -9,6 +9,7 @@ import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
@@ -28,10 +29,11 @@ public interface PedidoMapper {
     @AfterMapping
     default void afterMapping(@MappingTarget Pedido pedido) {
         pedido.setStatus(StatusPedido.REALIZADO);
-        pedido.setDataPedido(java.time.LocalDateTime.now());
+        pedido.setDataPedido(LocalDateTime.now());
 
         var total = calcularTotal(pedido);
         pedido.setTotal(total);
+        pedido.getItens().forEach(item -> item.setPedido(pedido));
     }
         private static BigDecimal calcularTotal(Pedido pedido) {
             return pedido.getItens().stream().map(item ->
