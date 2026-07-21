@@ -1,6 +1,7 @@
 package io.github.ms_icompras.pedidos.model;
 
 
+import io.github.ms_icompras.pedidos.controller.dto.DadosPagamentoDTO;
 import io.github.ms_icompras.pedidos.model.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /*
 create database icompraspedidos;
@@ -61,5 +63,11 @@ public class Pedido {
 
     @Column(name="url_nf")
     private String urlNotaFiscal;
+
+    @Transient
+    private DadosPagamento dadosPagamento;
+
+    @OneToMany(mappedBy = "codigoPedido")
+    private List<ItemPedido> itens;
 
 }

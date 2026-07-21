@@ -4,7 +4,6 @@ import io.github.ms_icompras.pedidos.model.Pedido;
 import io.github.ms_icompras.pedidos.repository.ItemPedidoRepository;
 import io.github.ms_icompras.pedidos.repository.PedidoRepository;
 import io.github.ms_icompras.pedidos.validator.PedidoValidator;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +17,8 @@ public class PedidoService {
 
     public Pedido criarPedido(Pedido pedido){
 
+
+        return  null;
     }
 
 }
