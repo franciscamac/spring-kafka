@@ -5,6 +5,7 @@ import io.github.ms_icompras.pedidos.controller.mappers.PedidoMapper;
 import io.github.ms_icompras.pedidos.service.PedidoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,6 +18,7 @@ public class PedidoController {
     private final PedidoService pedidoService;
     private final PedidoMapper pedidoMapper;
 
+    @PostMapping
     public ResponseEntity<Object> criar(@RequestBody NovoPedidoDTO novoPedidoDTO){
         var pedido = pedidoMapper.map(novoPedidoDTO);
         var novoPedido = pedidoService.criarPedido(pedido);
