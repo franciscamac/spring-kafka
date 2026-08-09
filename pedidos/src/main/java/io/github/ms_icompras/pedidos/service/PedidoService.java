@@ -21,12 +21,18 @@ public class PedidoService {
     @Transactional
     public Pedido criarPedido(Pedido pedido){
         pedidoValidator.validar(pedido);
+        realizarPersistencia(pedido);
+        enviarSolicitacaoPagamento(pedido);
+        return pedido;
+    }
+
+    private void realizarPersistencia(Pedido pedido) {
         pedidoRepository.save(pedido);
         itemPedidoRepository.saveAll(pedido.getItens());
+    }
+    private void enviarSolicitacaoPagamento(Pedido pedido) {
         var chavePagamento = servicoBancarioClient.solicitarPagamento(pedido);
         pedido.setChavePagamento(chavePagamento);
-
-        return pedido;
     }
 
 }

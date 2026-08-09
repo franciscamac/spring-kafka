@@ -12,7 +12,7 @@ public class ServicoBancarioClient {
 
     public String solicitarPagamento(Pedido pedido) {
         // Simulação de solicitação de pagamento
-        log.info("Solicitando pagamento para o pedido de código: {}", pedido.getCodigo());
+        log.info("Solicitando pagamento para o pedido de código: {}.", pedido.getCodigo());
         return UUID.randomUUID().toString();
     }
 }
